@@ -7,12 +7,12 @@ const gridBox = document.getElementById("grid")
 
 
 
+////////// INIT //////////
+
 // quando l'utente clicca accade un evento
 btnGenerate.addEventListener("click",function(){
     generateGrid();
 })
-
-
 
 
 
@@ -29,7 +29,12 @@ function generateGrid(){
     // impostiamo il numero di quadratini uguale al valore preso dall'elemento html
     let cellNumberSide = Math.ceil(Math.sqrt(cellQuantity)); 
 
-    
+    // creiamo un array di numeri casuali che saranno le nostre bombe
+    let arrayNumbers = []
+    for(i = 1;i <=16; i++){
+        arrayNumbers.push(randomNumber(1,cellQuantity));
+    }
+    console.log(arrayNumbers)
 
     for(let i = 1 ; i <= cellQuantity ; i++){
         
@@ -42,6 +47,9 @@ function generateGrid(){
         newElement.style.height =`calc(100% / ${cellNumberSide})`;
         // scriviamo all'interno di ogni quadratino l'index ciclato da 1 a 100
         newElement.innerText = i;
+
+       
+
             
         //aggiungiamo al nostro DIV  creato in precedenza un evento che al click ci permette di aggiungere la classe "clicked" e toglierla se gia presente             
         newElement.addEventListener("click",function(){
@@ -56,7 +64,18 @@ function generateGrid(){
     } 
     
     
+
+    
     
 }
+
+
+
+// creiamo una funzione che ci permette di creare numeri casuali con un range in base a quante caselle ci sono
+function randomNumber(min,max){
+    return Math.round(Math.random()*(max-min+1)+min);
+    
+}
+
 
 
