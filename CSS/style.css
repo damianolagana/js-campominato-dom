@@ -1,0 +1,74 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height:100vh;
+    font-family: sans-serif;
+}
+
+
+
+footer{
+    height: 7vh;
+}
+
+/******* NAV BAR *******/
+
+#navBar{
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+
+}
+
+/***** CONTAINER GRID  ******/
+
+#container{
+    background-color: #7fffd4;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+
+}
+
+#grid{
+    height: 500px;
+    width: 500px;
+    margin: 0 auto;
+    border: 2px black solid;
+    border-radius: 2%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.square{
+    border: 2px black solid;
+    border-radius: 10%;
+    font-weight: 600;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.clicked{
+    background-color: #dab147;
+}
+
+#btnPlay{
+    cursor: pointer;
+    padding: 0.2em 1em;
+}
+
+
+
+/* FOOTER */
+
+footer>h3{
+    padding: 1rem;
+}
+
