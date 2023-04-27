@@ -5,6 +5,7 @@ const btnGenerate = document.getElementById("btnPlay")
 // selezioniamo il contenitore della griglia
 const gridBox = document.getElementById("grid")
 
+gridBox.innerHTML = "";
 
 // quando l'utente clicca accade un evento
 btnGenerate.addEventListener("click",function(){
@@ -25,6 +26,8 @@ function generateGrid(){
     // impostiamo il numero di quadratini uguale al valore preso dall'elemento html
     let cellNumberSide = Math.ceil(Math.sqrt(cellQuantity)); 
 
+    
+
     for(let i = 1 ; i <= cellQuantity ; i++){
         
         // nuovo elemento DIV creato
@@ -42,11 +45,14 @@ function generateGrid(){
             this.classList.toggle("clicked")
         
         });
-  
-    } 
-    // appendiamo il nostro DIV al contenitore della griglia dentro l html
-    gridBox.append(newElement);  
+        
+        // appendiamo il nostro DIV al contenitore della griglia dentro l html
+        gridBox.append(newElement);  
 
+
+    } 
+    
+    
     
 }
 
