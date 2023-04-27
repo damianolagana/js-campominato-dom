@@ -5,7 +5,7 @@ const btnGenerate = document.getElementById("btnPlay")
 // selezioniamo il contenitore della griglia
 const gridBox = document.getElementById("grid")
 
-gridBox.innerHTML = "";
+
 
 // quando l'utente clicca accade un evento
 btnGenerate.addEventListener("click",function(){
@@ -21,6 +21,9 @@ btnGenerate.addEventListener("click",function(){
 //////////// FUNZIONI ////
 
 function generateGrid(){
+    // diamo un valore vuoto al contenitore della griglia per svuotarla ogni volta che si clicca
+    gridBox.innerHTML = "";
+
     // selezioniamo l'elemento(o meglio il "value") che ci fa cambiare il livello di difficoltà
     let cellQuantity = document.getElementById("levels").value;
     // impostiamo il numero di quadratini uguale al valore preso dall'elemento html
