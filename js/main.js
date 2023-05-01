@@ -66,7 +66,13 @@ function generateGrid(){
             } else{
                 this.classList.add("clicked");
                 punteggio++;
-                writeElement("punteggio", `Punteggio: ${punteggio}`)
+                writeElement("punteggio", `Punteggio: ${punteggio}`);
+
+                // se il punteggio è uguale alle celle totali meno le bombe allora l'utente HA VINTO
+                if(punteggio == cellQuantity - bombQuantity){
+                    writeElement("punteggio", `Partita terminata, hai vinto! Punteggio; ${punteggio}`);
+                    alert("Bravo, hai vinto!");
+                }
             }
             
             // this.classList.toggle("clicked")
