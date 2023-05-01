@@ -30,8 +30,13 @@ function generateGrid(){
     let cellNumberSide = Math.ceil(Math.sqrt(cellQuantity)); 
 
     // richiamiamo una funzione che genera le nostre 16 bombe
+    let bombQuantity = 16;
     let bombs = generateBomb(bombQuantity,cellQuantity)
     console.log("bombe:",bombs)
+
+    // creiamo una variabile punteggio
+    let punteggio = 0;
+    writeElement("punteggio", `Punteggio : ${punteggio}`);
     
     // cicliamo il nostro nuovo elemento
     for(let i = 1 ; i <= cellQuantity ; i++){
@@ -51,7 +56,20 @@ function generateGrid(){
             
         //aggiungiamo al nostro DIV  creato in precedenza un evento che al click ci permette di aggiungere la classe "clicked" e toglierla se gia presente             
         newElement.addEventListener("click",function(){
-            this.classList.toggle("clicked")
+            // utilizziamo l'index del ciclo che genera le nostre celle in base alla variabile CellQuantity che rappresenta il livello di difficoltà
+            let currentCell = i;
+
+            // se la cella selezionata nella pagina contiene la bomba allora aggiungi la classe clickedBomb altrimenti la classe clicked
+            if(bombs.includes(currentCell)){
+                this.classList.add("clickedBomb");
+                writeElement("punteggio",`Partita terminata, hai perso! Punteggio totale : ${punteggio}`)
+            } else{
+                this.classList.add("clicked");
+                punteggio++;
+                writeElement("punteggio", `Punteggio: ${punteggio}`)
+            }
+            
+            // this.classList.toggle("clicked")
         
         });
         
@@ -88,11 +106,11 @@ function generateBomb(bombNumber, cellNumber){
 
     let bombs = [];
 
-    while(bombs.length < 16){
+    while(bombs.length < bombNumber){
         let newBomb = randomNumber(1,cellNumber);
 
         if(bombs.includes(newBomb)==false){
-            bombNumber.push(newBomb);
+            bombs.push(newBomb);
         }
     }
 

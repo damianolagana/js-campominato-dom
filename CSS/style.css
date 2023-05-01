@@ -59,6 +59,10 @@ footer{
     background-color: #dab147;
 }
 
+.clickedBomb{
+    background-color: crimson;
+}
+
 #btnPlay{
     cursor: pointer;
     padding: 0.2em 1em;
