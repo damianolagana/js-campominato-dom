@@ -37,6 +37,9 @@ function generateGrid(){
     // creiamo una variabile punteggio
     let punteggio = 0;
     writeElement("punteggio", `Punteggio : ${punteggio}`);
+
+    // gestore di gameover
+    let gameOver = false;
     
     // cicliamo il nostro nuovo elemento
     for(let i = 1 ; i <= cellQuantity ; i++){
@@ -56,24 +59,33 @@ function generateGrid(){
             
         //aggiungiamo al nostro DIV  creato in precedenza un evento che al click ci permette di aggiungere la classe "clicked" e toglierla se gia presente             
         newElement.addEventListener("click",function(){
-            // utilizziamo l'index del ciclo che genera le nostre celle in base alla variabile CellQuantity che rappresenta il livello di difficoltà
-            let currentCell = i;
+            // creiamo una condizione dove il gioco è settato come falso se il gioco diventa TRUE allora esce un alert hai perso e l'utente non puo piu continuare
+            if(gameOver == false){
+                // utilizziamo l'index del ciclo che genera le nostre celle in base alla variabile CellQuantity che rappresenta il livello di difficoltà
+                let currentCell = i;
 
-            // se la cella selezionata nella pagina contiene la bomba allora aggiungi la classe clickedBomb altrimenti la classe clicked
-            if(bombs.includes(currentCell)){
-                this.classList.add("clickedBomb");
-                writeElement("punteggio",`Partita terminata, hai perso! Punteggio totale : ${punteggio}`)
-            } else{
-                this.classList.add("clicked");
-                punteggio++;
-                writeElement("punteggio", `Punteggio: ${punteggio}`);
+                // se la cella selezionata nella pagina contiene la bomba allora aggiungi la classe clickedBomb altrimenti la classe clicked
+                if(bombs.includes(currentCell)){
+                    this.classList.add("clickedBomb");
+                    writeElement("punteggio",`Partita terminata, hai perso! Punteggio totale : ${punteggio}`)
+                    gameOver = true ;
+                } else{
+                    this.classList.add("clicked");
+                    punteggio++;
+                    writeElement("punteggio", `Punteggio: ${punteggio}`);
 
-                // se il punteggio è uguale alle celle totali meno le bombe allora l'utente HA VINTO
-                if(punteggio == cellQuantity - bombQuantity){
+                    // se il punteggio è uguale alle celle totali meno le bombe allora l'utente HA VINTO
+                    if(punteggio == cellQuantity - bombQuantity){
                     writeElement("punteggio", `Partita terminata, hai vinto! Punteggio; ${punteggio}`);
                     alert("Bravo, hai vinto!");
+                    gameOver = true;
+                    }
                 }
+            } else{
+                alert("Spiacente hai perso! Ricomincia la partita")
             }
+               
+           
             
             // this.classList.toggle("clicked")
         
