@@ -72,3 +72,9 @@ footer>h3{
     padding: 1rem;
 }
 
+
+#footerContainer{
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+}

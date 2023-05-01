@@ -29,13 +29,11 @@ function generateGrid(){
     // impostiamo il numero di quadratini uguale al valore preso dall'elemento html
     let cellNumberSide = Math.ceil(Math.sqrt(cellQuantity)); 
 
-    // creiamo un array di numeri casuali che saranno le nostre bombe
-    let arrayNumbers = []
-    for(i = 1;i <=16; i++){
-        arrayNumbers.push(randomNumber(1,cellQuantity));
-    }
-    console.log(arrayNumbers)
-
+    // richiamiamo una funzione che genera le nostre 16 bombe
+    let bombs = generateBomb(bombQuantity,cellQuantity)
+    console.log("bombe:",bombs)
+    
+    // cicliamo il nostro nuovo elemento
     for(let i = 1 ; i <= cellQuantity ; i++){
         
         // nuovo elemento DIV creato
@@ -78,4 +76,25 @@ function randomNumber(min,max){
 }
 
 
+// creiamo una funzione che scrive il punteggio nella pagina html
 
+function writeElement(elementId,content){
+    document.getElementById(elementId).innerHTML = content;
+}
+
+
+// funzione che crea le bombe
+function generateBomb(bombNumber, cellNumber){
+
+    let bombs = [];
+
+    while(bombs.length < 16){
+        let newBomb = randomNumber(1,cellNumber);
+
+        if(bombs.includes(newBomb)==false){
+            bombNumber.push(newBomb);
+        }
+    }
+
+    return bombs;
+}
